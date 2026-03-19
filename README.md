@@ -1,6 +1,6 @@
 # Awesome Robot Vision [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
 
-A curated list of resources for **robot vision** — perception methods, tools, datasets, and benchmarks focused on visual understanding in robotic systems. Covers 6D pose estimation, grasping perception, 3D scene understanding, depth estimation, semantic mapping, visual servoing, and related topics.
+A curated list of resources for **robot vision** — perception methods, tools, datasets, and benchmarks focused on visual understanding in robotic systems. Covers 6D pose estimation, grasping perception, 3D scene understanding, depth estimation, semantic mapping, visual SLAM, robot learning policies, visual servoing, and related topics.
 
 Contributions welcome! Please read the [contribution guidelines](CONTRIBUTING.md) first.
 
@@ -10,10 +10,13 @@ Contributions welcome! Please read the [contribution guidelines](CONTRIBUTING.md
 
 - [6D Object Pose Estimation](#6d-object-pose-estimation)
 - [Robotic Grasping \& Manipulation Perception](#robotic-grasping--manipulation-perception)
+- [Robot Learning Policies with Visual Input](#robot-learning-policies-with-visual-input)
 - [3D Perception \& Point Clouds](#3d-perception--point-clouds)
+- [Neural Radiance Fields \& Gaussian Splatting](#neural-radiance-fields--gaussian-splatting)
 - [Depth Estimation](#depth-estimation)
 - [Semantic \& Open-Vocabulary Perception](#semantic--open-vocabulary-perception)
 - [Scene Understanding \& Semantic Mapping](#scene-understanding--semantic-mapping)
+- [Visual Odometry \& SLAM](#visual-odometry--slam)
 - [Feature Matching](#feature-matching)
 - [Optical Flow \& Scene Flow](#optical-flow--scene-flow)
 - [Visual Servoing \& Active Perception](#visual-servoing--active-perception)
@@ -38,6 +41,7 @@ Methods and frameworks for estimating the 6-DoF (3D position + 3D orientation) o
 - **[MegaPose](https://github.com/megapose6d/megapose6d)** — 6D pose estimation of novel objects via render-and-compare at scale. CoRL 2022. ![Stars](https://img.shields.io/github/stars/megapose6d/megapose6d?style=flat-square)
 - **[Template-Pose](https://github.com/nv-nguyen/template-pose)** — Template-based 3D object pose estimation revisited for generalization and occlusion robustness. CVPR 2022. ![Stars](https://img.shields.io/github/stars/nv-nguyen/template-pose?style=flat-square)
 - **[GigaPose](https://github.com/nv-nguyen/gigapose)** — Fast and robust novel object pose estimation via one correspondence. CVPR 2024. ![Stars](https://img.shields.io/github/stars/nv-nguyen/gigapose?style=flat-square)
+- **[CosyPose](https://github.com/ylabbe/cosypose)** — Consistent multi-view multi-object 6D pose estimation from a single image. ECCV 2020. ![Stars](https://img.shields.io/github/stars/ylabbe/cosypose?style=flat-square)
 - **[ROMAN](https://github.com/mit-acl/roman)** — View-invariant global localization via object matching for robust robot pose estimation. RSS 2025. ![Stars](https://img.shields.io/github/stars/mit-acl/roman?style=flat-square)
 - **[Unity Robotics Object Pose Estimation](https://github.com/Unity-Technologies/Robotics-Object-Pose-Estimation)** — End-to-end demonstration of pose estimation from synthetic Unity data for robot pick-and-place. ![Stars](https://img.shields.io/github/stars/Unity-Technologies/Robotics-Object-Pose-Estimation?style=flat-square)
 
@@ -57,10 +61,30 @@ Visual methods for detecting, planning, and evaluating grasp poses; affordance r
 - **[AnyGrasp SDK](https://github.com/graspnet/anygrasp_sdk)** — High-performance, generalizable 6-DoF grasp detection from point clouds; API for real robot deployment. ![Stars](https://img.shields.io/github/stars/graspnet/anygrasp_sdk?style=flat-square)
 - **[GPD](https://github.com/atenpas/gpd)** — Grasp Pose Detection: detects 6-DOF grasp poses in point clouds for robot grasping. ![Stars](https://img.shields.io/github/stars/atenpas/gpd?style=flat-square)
 - **[GraspNet API](https://github.com/graspnet/graspnetAPI)** — Toolbox and API for the GraspNet-1Billion large-scale grasp pose dataset. ![Stars](https://img.shields.io/github/stars/graspnet/graspnetAPI?style=flat-square)
+- **[GaussianGrasper](https://github.com/MrSecant/GaussianGrasper)** — 3D Language Gaussian Splatting for open-vocabulary robotic grasping from natural language queries. RA-L 2024. ![Stars](https://img.shields.io/github/stars/MrSecant/GaussianGrasper?style=flat-square)
 
 ### Simulation Environments for Manipulation
 
 - **[ManiSkill](https://github.com/haosulab/ManiSkill)** — GPU-parallelized robotics simulator and benchmark for manipulation skill learning with rich visual observation. ![Stars](https://img.shields.io/github/stars/haosulab/ManiSkill?style=flat-square)
+- **[RLBench](https://github.com/stepjam/RLBench)** — Large-scale robot learning benchmark with 100+ diverse manipulation tasks and vision-based observations. ![Stars](https://img.shields.io/github/stars/stepjam/RLBench?style=flat-square)
+
+---
+
+## Robot Learning Policies with Visual Input
+
+End-to-end visuomotor policies and foundation models for robotic manipulation that use camera observations as primary input.
+
+### Imitation Learning & Diffusion Policies
+
+- **[Diffusion Policy](https://github.com/real-stanford/diffusion_policy)** — Visuomotor policy learning via action diffusion; highly influential framework for robot learning from demonstrations. RSS 2023. ![Stars](https://img.shields.io/github/stars/real-stanford/diffusion_policy?style=flat-square)
+- **[ACT](https://github.com/tonyzhaozh/act)** — Action Chunking with Transformers: imitation learning policy for bimanual dexterous manipulation from visual observations. RSS 2023. ![Stars](https://img.shields.io/github/stars/tonyzhaozh/act?style=flat-square)
+
+### Large Robot Foundation Models
+
+- **[π0 / openpi](https://github.com/Physical-Intelligence/openpi)** — Open-source implementation of π0, a flow-matching-based generalist robot policy with vision-language conditioning. ![Stars](https://img.shields.io/github/stars/Physical-Intelligence/openpi?style=flat-square)
+- **[Octo](https://github.com/octo-models/octo)** — Transformer-based robot policy trained on 800k+ diverse trajectories; supports image, language, and proprioception inputs. ![Stars](https://img.shields.io/github/stars/octo-models/octo?style=flat-square)
+- **[RT-2](https://github.com/google-research/robotics_transformer)** — Robotics Transformer 2: vision-language-action model trained on web data and robot demonstrations. CoRL 2023. ![Stars](https://img.shields.io/github/stars/google-research/robotics_transformer?style=flat-square)
+- **[LeRobot](https://github.com/huggingface/lerobot)** — HuggingFace framework making end-to-end robot learning more accessible; includes datasets, models, and environments. ![Stars](https://img.shields.io/github/stars/huggingface/lerobot?style=flat-square)
 
 ---
 
@@ -73,14 +97,36 @@ Libraries and methods for processing 3D sensor data (LiDAR, RGB-D, structured li
 - **[Open3D](https://github.com/isl-org/Open3D)** — A modern library for 3D data processing: point clouds, meshes, RGBD, registration, visualization, and deep learning integration. ![Stars](https://img.shields.io/github/stars/isl-org/Open3D?style=flat-square)
 - **[Point Cloud Library (PCL)](https://github.com/PointCloudLibrary/pcl)** — Foundational open-source library for 2D/3D image and point cloud processing in robotics. ![Stars](https://img.shields.io/github/stars/PointCloudLibrary/pcl?style=flat-square)
 
+### Deep Learning on Point Clouds
+
+- **[PointNet](https://github.com/fxia22/pointnet.pytorch)** — PyTorch implementation of PointNet: the foundational deep network for 3D point set learning (classification and segmentation). CVPR 2017. ![Stars](https://img.shields.io/github/stars/fxia22/pointnet.pytorch?style=flat-square)
+- **[PointNet++](https://github.com/charlesq34/pointnet2)** — Hierarchical feature learning on point sets; improves upon PointNet with local neighborhood grouping. NeurIPS 2017. ![Stars](https://img.shields.io/github/stars/charlesq34/pointnet2?style=flat-square)
+- **[MMDetection3D](https://github.com/open-mmlab/mmdetection3d)** — OpenMMLab's next-generation platform for 3D object detection from point clouds (LiDAR and RGB-D). ![Stars](https://img.shields.io/github/stars/open-mmlab/mmdetection3d?style=flat-square)
+
 ### Registration & Localization
 
 - **[TEASER++](https://github.com/MIT-SPARK/TEASER-plusplus)** — Fast and certifiably robust point cloud registration library, robust to high outlier ratios. ![Stars](https://img.shields.io/github/stars/MIT-SPARK/TEASER-plusplus?style=flat-square)
 - **[Dynamic Robot Localization](https://github.com/carlosmccosta/dynamic_robot_localization)** — Point cloud registration pipeline for robot localization and 3D perception using PCL and ICP/NDT variants. ![Stars](https://img.shields.io/github/stars/carlosmccosta/dynamic_robot_localization?style=flat-square)
 
+### Volumetric Reconstruction
+
+- **[TSDF Fusion](https://github.com/andyzeng/tsdf-fusion-python)** — Python/CUDA code to fuse multiple RGB-D images into a TSDF voxel volume; widely used for 3D scene reconstruction in manipulation. ![Stars](https://img.shields.io/github/stars/andyzeng/tsdf-fusion-python?style=flat-square)
+
 ### Gaussian Splatting for Robotics
 
 - **[DN-Splatter](https://github.com/maturk/dn-splatter)** — 3D Gaussian splatting with depth and normal priors for robot-relevant scene reconstruction from RGB-D. ![Stars](https://img.shields.io/github/stars/maturk/dn-splatter?style=flat-square)
+
+---
+
+## Neural Radiance Fields & Gaussian Splatting
+
+Novel implicit and explicit scene representations increasingly used for robot perception, manipulation, and map building.
+
+- **[3D Gaussian Splatting](https://github.com/graphdeco-inria/gaussian-splatting)** — Original reference implementation of real-time novel view synthesis via 3D Gaussian primitives; highly influential for robot scene representation. SIGGRAPH 2023. ![Stars](https://img.shields.io/github/stars/graphdeco-inria/gaussian-splatting?style=flat-square)
+- **[Instant-NGP](https://github.com/NVlabs/instant-ngp)** — Instant neural graphics primitives for lightning-fast NeRF training; enables rapid scene modeling for robotics. SIGGRAPH 2022. ![Stars](https://img.shields.io/github/stars/NVlabs/instant-ngp?style=flat-square)
+- **[Nerfstudio](https://github.com/nerfstudio-project/nerfstudio)** — Collaboration-friendly framework for NeRF and Gaussian splatting methods; modular pipelines for 3D scene reconstruction. ![Stars](https://img.shields.io/github/stars/nerfstudio-project/nerfstudio?style=flat-square)
+- **[LERF](https://github.com/kerrj/lerf)** — Language Embedded Radiance Fields: query 3D scenes with natural language using CLIP-grounded NeRFs. ![Stars](https://img.shields.io/github/stars/kerrj/lerf?style=flat-square)
+- **[3D-OVS](https://github.com/Kunhao-Liu/3D-OVS)** — Weakly supervised 3D open-vocabulary segmentation from NeRF representations. NeurIPS 2023. ![Stars](https://img.shields.io/github/stars/Kunhao-Liu/3D-OVS?style=flat-square)
 
 ---
 
@@ -109,20 +155,25 @@ Methods for object detection, segmentation, and language-grounded perception —
 ### Segmentation
 
 - **[Segment Anything (SAM)](https://github.com/facebookresearch/segment-anything)** — Foundation model for promptable image segmentation; broadly applicable in robot perception pipelines. ICCV 2023. ![Stars](https://img.shields.io/github/stars/facebookresearch/segment-anything?style=flat-square)
+- **[SAM 2](https://github.com/facebookresearch/sam2)** — Segment Anything Model 2: real-time promptable segmentation for images and video; stronger and faster than SAM 1. ICCV 2024. ![Stars](https://img.shields.io/github/stars/facebookresearch/sam2?style=flat-square)
 - **[Grounded-Segment-Anything](https://github.com/IDEA-Research/Grounded-Segment-Anything)** — Combines GroundingDINO and SAM to automatically detect and segment any object from a text prompt. ![Stars](https://img.shields.io/github/stars/IDEA-Research/Grounded-Segment-Anything?style=flat-square)
+- **[Mask R-CNN](https://github.com/matterport/Mask_RCNN)** — Classic instance segmentation on Keras/TensorFlow; widely used baseline for robot scene understanding. ICCV 2017. ![Stars](https://img.shields.io/github/stars/matterport/Mask_RCNN?style=flat-square)
 
 ### Open-Vocabulary Detection
 
 - **[GroundingDINO](https://github.com/IDEA-Research/GroundingDINO)** — Open-set object detection by grounding language queries to image regions. ECCV 2024. ![Stars](https://img.shields.io/github/stars/IDEA-Research/GroundingDINO?style=flat-square)
+- **[Detic](https://github.com/facebookresearch/Detic)** — Detecting twenty-thousand classes using image-level supervision; large-vocabulary detection for open-world robot environments. ECCV 2022. ![Stars](https://img.shields.io/github/stars/facebookresearch/Detic?style=flat-square)
 
 ### Detection & Segmentation Frameworks
 
 - **[Detectron2](https://github.com/facebookresearch/detectron2)** — Facebook AI Research platform for object detection, instance segmentation, and related visual recognition tasks. ![Stars](https://img.shields.io/github/stars/facebookresearch/detectron2?style=flat-square)
+- **[MMDetection](https://github.com/open-mmlab/mmdetection)** — OpenMMLab detection toolbox covering Faster R-CNN, DETR, YOLO, and 40+ state-of-the-art detectors. ![Stars](https://img.shields.io/github/stars/open-mmlab/mmdetection?style=flat-square)
+- **[MMSegmentation](https://github.com/open-mmlab/mmsegmentation)** — OpenMMLab semantic segmentation toolbox with 40+ models for outdoor and indoor robot environments. ![Stars](https://img.shields.io/github/stars/open-mmlab/mmsegmentation?style=flat-square)
+- **[Ultralytics YOLO](https://github.com/ultralytics/ultralytics)** — State-of-the-art real-time object detection, segmentation, pose estimation, and tracking; widely deployed on robot hardware. ![Stars](https://img.shields.io/github/stars/ultralytics/ultralytics?style=flat-square)
 
 ### Language-Embedded 3D Representations
 
-- **[LERF](https://github.com/kerrj/lerf)** — Language Embedded Radiance Fields: query 3D scenes with natural language using CLIP-grounded NeRFs. ![Stars](https://img.shields.io/github/stars/kerrj/lerf?style=flat-square)
-- **[3D-OVS](https://github.com/Kunhao-Liu/3D-OVS)** — Weakly supervised 3D open-vocabulary segmentation from NeRF representations. NeurIPS 2023. ![Stars](https://img.shields.io/github/stars/Kunhao-Liu/3D-OVS?style=flat-square)
+See [Neural Radiance Fields & Gaussian Splatting](#neural-radiance-fields--gaussian-splatting) for LERF and 3D-OVS.
 
 ---
 
@@ -140,6 +191,28 @@ Methods for building structured, semantic representations of 3D environments for
 - **[Kimera-VIO](https://github.com/MIT-SPARK/Kimera-VIO)** — Visual-inertial odometry with SLAM capabilities, mesh generation, and semantic annotation. ![Stars](https://img.shields.io/github/stars/MIT-SPARK/Kimera-VIO?style=flat-square)
 - **[Kimera-Semantics](https://github.com/MIT-SPARK/Kimera-Semantics)** — Real-time 3D semantic reconstruction from 2D RGB-D images using volumetric mapping. ![Stars](https://img.shields.io/github/stars/MIT-SPARK/Kimera-Semantics?style=flat-square)
 - **[Voxblox](https://github.com/ethz-asl/voxblox)** — Flexible voxel-based mapping library focused on TSDF and ESDF for robot path planning and obstacle avoidance. ![Stars](https://img.shields.io/github/stars/ethz-asl/voxblox?style=flat-square)
+- **[RTAB-Map](https://github.com/introlab/rtabmap)** — Real-Time Appearance-Based Mapping: RGB-D and LiDAR SLAM with loop closure for long-term robot navigation. ![Stars](https://img.shields.io/github/stars/introlab/rtabmap?style=flat-square)
+
+---
+
+## Visual Odometry & SLAM
+
+Algorithms for estimating robot pose from camera and inertial measurements, enabling autonomous navigation.
+
+### Visual & Visual-Inertial Odometry
+
+- **[ORB-SLAM2](https://github.com/raulmur/ORB_SLAM2)** — Real-time SLAM for monocular, stereo, and RGB-D cameras with loop detection and relocalization; one of the most cited SLAM systems. TROS 2017. ![Stars](https://img.shields.io/github/stars/raulmur/ORB_SLAM2?style=flat-square)
+- **[SVO](https://github.com/uzh-rpg/rpg_svo)** — Semi-direct Visual Odometry: combines feature-based and direct methods for fast drone and robot navigation. ICRA 2014. ![Stars](https://img.shields.io/github/stars/uzh-rpg/rpg_svo?style=flat-square)
+- **[VINS-Mono](https://github.com/HKUST-Aerial-Robotics/VINS-Mono)** — Robust and versatile monocular visual-inertial state estimator for aerial robots. TROS 2018. ![Stars](https://img.shields.io/github/stars/HKUST-Aerial-Robotics/VINS-Mono?style=flat-square)
+- **[VINS-Fusion](https://github.com/HKUST-Aerial-Robotics/VINS-Fusion)** — Optimization-based multi-sensor (camera + IMU + GPS) state estimator, extends VINS-Mono. ![Stars](https://img.shields.io/github/stars/HKUST-Aerial-Robotics/VINS-Fusion?style=flat-square)
+
+### LiDAR Odometry & Mapping
+
+- **[LIO-SAM](https://github.com/TixiaoShan/LIO-SAM)** — Tightly-coupled LiDAR-inertial odometry via smoothing and mapping; widely used for ground robot localization. IROS 2020. ![Stars](https://img.shields.io/github/stars/TixiaoShan/LIO-SAM?style=flat-square)
+
+### SLAM Back-Ends & Factor Graphs
+
+- **[GTSAM](https://github.com/borglab/gtsam)** — Georgia Tech Smoothing and Mapping library: factor graph-based back-end for SLAM and sensor fusion, used extensively in robotics research. ![Stars](https://img.shields.io/github/stars/borglab/gtsam?style=flat-square)
 
 ---
 
@@ -184,6 +257,8 @@ Simulation environments and evaluation benchmarks for robot vision tasks.
 ### Simulators
 
 - **[ManiSkill](https://github.com/haosulab/ManiSkill)** — GPU-parallelized robotic manipulation simulator with photo-realistic rendering and diverse manipulation tasks. ![Stars](https://img.shields.io/github/stars/haosulab/ManiSkill?style=flat-square)
+- **[RLBench](https://github.com/stepjam/RLBench)** — Large-scale robot learning environment with 100+ manipulation tasks and multiple visual camera viewpoints. ![Stars](https://img.shields.io/github/stars/stepjam/RLBench?style=flat-square)
+- **[DM Control](https://github.com/google-deepmind/dm_control)** — Google DeepMind's physics-based simulation suite using MuJoCo for robot learning environments. ![Stars](https://img.shields.io/github/stars/google-deepmind/dm_control?style=flat-square)
 
 ---
 
@@ -214,9 +289,10 @@ Curated datasets for training and evaluating robot vision models.
 
 | Dataset | Description | Link |
 |---|---|---|
-| **ScanNet** | 1,513 annotated RGB-D indoor scans with 3D object labels; widely used for scene understanding | [Project](http://www.scan-net.org/) |
+| **ScanNet** | 1,513 annotated RGB-D indoor scans with 3D object labels; widely used for scene understanding and 3D detection | [Project](http://www.scan-net.org/) / [GitHub](https://github.com/ScanNet/ScanNet) |
 | **Matterport3D** | 90 building-scale RGB-D scans with region and object annotations for navigation | [Project](https://niessner.github.io/Matterport/) |
-| **OCID** | Object Clutter Indoor Dataset: cluttered tabletop scenes with instance segmentation labels | [GitHub](https://github.com/atenpas/gpd) |
+| **OCID** | Object Clutter Indoor Dataset: cluttered tabletop scenes with instance segmentation labels | [Dataset](https://www.acin.tuwien.ac.at/en/vision-for-robotics/software-tools/object-clutter-indoor-dataset/) |
+| **HM3D** | Habitat-Matterport 3D: 1,000 building-scale 3D environments for embodied navigation agents | [Project](https://aihabitat.org/datasets/hm3d/) |
 
 ---
 
@@ -229,13 +305,27 @@ General-purpose libraries and ROS packages for building robot vision systems.
 - **[OpenCV](https://github.com/opencv/opencv)** — The foundational open-source computer vision library with comprehensive support for image processing, camera calibration, and feature detection. ![Stars](https://img.shields.io/github/stars/opencv/opencv?style=flat-square)
 - **[OpenCV Contrib](https://github.com/opencv/opencv_contrib)** — Extra modules for OpenCV including aruco markers, surface matching, and other robotics-relevant tools. ![Stars](https://img.shields.io/github/stars/opencv/opencv_contrib?style=flat-square)
 
+### Pose & Keypoint Estimation Frameworks
+
+- **[MMPose](https://github.com/open-mmlab/mmpose)** — OpenMMLab pose estimation toolbox supporting human, hand, animal, and general keypoint detection. ![Stars](https://img.shields.io/github/stars/open-mmlab/mmpose?style=flat-square)
+
+### Calibration
+
+- **[Kalibr](https://github.com/ethz-asl/kalibr)** — Visual-inertial calibration toolbox for camera intrinsics, camera-IMU extrinsics, and multi-camera rigs; essential for robot sensor setup. ![Stars](https://img.shields.io/github/stars/ethz-asl/kalibr?style=flat-square)
+
+### Annotation
+
+- **[Labelme](https://github.com/wkentaro/labelme)** — Image annotation tool supporting polygon, rectangle, and AI-assisted labeling; widely used to create robot vision training data. ![Stars](https://img.shields.io/github/stars/wkentaro/labelme?style=flat-square)
+
 ### ROS Integration
 
 - **[vision_opencv](https://github.com/ros-perception/vision_opencv)** — Official ROS packages bridging OpenCV and ROS for image transport and processing in robot pipelines. ![Stars](https://img.shields.io/github/stars/ros-perception/vision_opencv?style=flat-square)
+- **[image_pipeline](https://github.com/ros-perception/image_pipeline)** — ROS image processing pipeline: camera drivers, rectification, stereo, and depth image tools. ![Stars](https://img.shields.io/github/stars/ros-perception/image_pipeline?style=flat-square)
 
 ### Deployment & Inference
 
 - **[torch2trt](https://github.com/NVIDIA-AI-IOT/torch2trt)** — Easy-to-use PyTorch to TensorRT converter for deploying robot vision models on NVIDIA edge hardware (Jetson). ![Stars](https://img.shields.io/github/stars/NVIDIA-AI-IOT/torch2trt?style=flat-square)
+- **[CuRobo](https://github.com/NVlabs/curobo)** — CUDA-accelerated robot library for GPU-parallel motion generation and collision checking, used with vision-based perception. ![Stars](https://img.shields.io/github/stars/NVlabs/curobo?style=flat-square)
 
 ---
 
@@ -249,6 +339,9 @@ Overview and survey papers that provide a structured view of robot vision sub-fi
 - **Open-Vocabulary Object Detection: A Survey** — Reviews VLM-based approaches for open-set detection applicable to robotics. [arXiv 2024](https://arxiv.org/abs/2401.11739)
 - **3D Scene Graph: A Structure for Unified Semantics, 3D Space, and Camera** — Foundational paper for 3D scene graphs in robot understanding. [ICCV 2019](https://3dscenegraph.stanford.edu/)
 - **Deep Learning for Visual Perception in Robotics** — Broad overview of deep learning methods across the core robot vision tasks. [Annual Review of Control, Robotics, and Autonomous Systems 2023](https://www.annualreviews.org/doi/10.1146/annurev-control-042920-013838)
+- **A Survey of Visual SLAM** — Overview of monocular, stereo, RGB-D, and LiDAR SLAM methods with focus on visual front-ends. [IEEE Transactions on Instrumentation and Measurement 2022](https://ieeexplore.ieee.org/document/9870295)
+- **Foundation Models for Robotics: Applications, Challenges, and the Future** — Survey of LLM, VLM, and generalist robot policies that leverage visual perception. [arXiv 2024](https://arxiv.org/abs/2312.07843)
+- **Neural Radiance Fields for Robotics: A Survey** — Reviews NeRF and Gaussian splatting applications in robot perception, mapping, and manipulation. [arXiv 2024](https://arxiv.org/abs/2405.01333)
 
 ---
 
