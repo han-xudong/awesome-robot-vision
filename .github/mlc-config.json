@@ -1,0 +1,31 @@
+{
+  "ignorePatterns": [
+    {
+      "pattern": "^https://img.shields.io"
+    },
+    {
+      "pattern": "^https://awesome.re"
+    },
+    {
+      "pattern": "^http://pr.cs.cornell.edu"
+    },
+    {
+      "pattern": "^http://campar.in.tum.de"
+    },
+    {
+      "pattern": "^http://ci-sparklab.mit.edu"
+    }
+  ],
+  "httpHeaders": [
+    {
+      "urls": ["https://github.com"],
+      "headers": {
+        "Accept": "text/html"
+      }
+    }
+  ],
+  "retryOn429": true,
+  "retryCount": 3,
+  "fallbackRetryDelay": "30s",
+  "aliveStatusCodes": [200, 206]
+}

@@ -1,8 +1,19 @@
-# Awesome Robot Vision [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
+# Awesome Robot Vision
+
+<div align="center">
+
+[![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
+[![License: CC0-1.0](https://img.shields.io/badge/License-CC0_1.0-lightgrey.svg)](https://creativecommons.org/publicdomain/zero/1.0/)
+[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](CONTRIBUTING.md)
+[![GitHub Stars](https://img.shields.io/github/stars/han-xudong/awesome-robot-vision?style=social)](https://github.com/han-xudong/awesome-robot-vision/stargazers)
+
+</div>
 
 A curated list of resources for **robot vision** — perception methods, tools, datasets, and benchmarks focused on visual understanding in robotic systems. Covers 6D pose estimation, grasping perception, 3D scene understanding, depth estimation, semantic mapping, visual SLAM, robot learning policies, visual servoing, and related topics.
 
-Contributions welcome! Please read the [contribution guidelines](CONTRIBUTING.md) first.
+> ⭐ If you find this list useful, please consider giving it a **star** — it helps others discover the project and motivates continued maintenance!
+
+Contributions welcome! Please read the [contribution guidelines](CONTRIBUTING.md) before submitting a PR.
 
 ---
 
@@ -404,3 +415,12 @@ Overview and survey papers that provide a structured view of robot vision sub-fi
 | **A Survey on Monocular Depth Estimation** | Covers supervised, self-supervised, and foundation model approaches. | arXiv 2024 | [arXiv](https://arxiv.org/abs/2401.17512) |
 | **Open-Vocabulary Object Detection: A Survey** | Reviews VLM-based approaches for open-set detection applicable to robotics. | arXiv 2024 | [arXiv](https://arxiv.org/abs/2401.11739) |
 | **3D Scene Graph: A Structure for Unified Semantics, 3D Space, and Camera** | Foundational paper for 3D scene graphs in robot understanding. | ICCV 2019 | [Website](https://3dscenegraph.stanford.edu/) |
+
+
+---
+
+## License
+
+[![License: CC0-1.0](https://img.shields.io/badge/License-CC0_1.0-lightgrey.svg)](https://creativecommons.org/publicdomain/zero/1.0/)
+
+To the extent possible under law, the maintainers of **Awesome Robot Vision** have waived all copyright and related or neighboring rights to this work. This list is released to the public domain under the [CC0 1.0 Universal](LICENSE) license — you are free to copy, modify, and distribute the content without asking permission.

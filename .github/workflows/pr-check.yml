@@ -1,0 +1,51 @@
+name: PR Checks
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - "README.md"
+      - "CONTRIBUTING.md"
+
+jobs:
+  # ── 1. Markdown link checker ─────────────────────────────────────────────────
+  link-check:
+    name: Check links
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install markdown-link-check
+        run: npm install -g markdown-link-check
+
+      - name: Run link check on README
+        run: |
+          markdown-link-check README.md \
+            --config .github/mlc-config.json \
+            --retry \
+            --quiet
+
+  # ── 2. Lint README format ─────────────────────────────────────────────────────
+  format-lint:
+    name: Lint README format
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Check table structure
+        run: python3 .github/scripts/check_format.py
+
+  # ── 3. Spell check ───────────────────────────────────────────────────────────
+  spell-check:
+    name: Spell check
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Run cspell
+        uses: streetsidesoftware/cspell-action@v6
+        with:
+          files: "README.md CONTRIBUTING.md"
+          config: .github/cspell.json
+          strict: false
+          inline: warning
