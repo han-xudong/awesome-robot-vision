@@ -1,95 +1,84 @@
 # Contributing to Awesome Robot Vision
 
-Thank you for your interest in contributing! This guide explains how to add or improve entries so the list stays consistent and high-quality.
-
----
+Thank you for your interest in contributing! This list aims to be the most comprehensive and up-to-date collection of resources for **robot vision** research.
 
 ## Table of Contents
 
+- [What to Contribute](#what-to-contribute)
 - [How to Contribute](#how-to-contribute)
-- [Entry Requirements](#entry-requirements)
-- [Table Format](#table-format)
-- [Publication Venue Tags](#publication-venue-tags)
+- [Entry Format](#entry-format)
+- [Quality Guidelines](#quality-guidelines)
 - [Pull Request Checklist](#pull-request-checklist)
-- [Reporting Issues](#reporting-issues)
+- [Code of Conduct](#code-of-conduct)
+
+---
+
+## What to Contribute
+
+We welcome additions of:
+
+- **Methods and frameworks** for robot vision tasks (pose estimation, grasping, depth estimation, SLAM, etc.)
+- **Datasets** used for training or evaluating robot vision systems
+- **Toolkits and libraries** that support robot vision development
+- **Benchmarks and simulation environments** for evaluation
+- **Survey papers** providing a structured overview of a sub-field
+
+We are **not** looking for:
+
+- General computer vision work with no clear robotics application
+- Duplicates of existing entries
+- Projects that are not publicly accessible or described in a paper/report
 
 ---
 
 ## How to Contribute
 
-1. **Fork** this repository and create a new branch from `main`.
-2. Make your changes following the guidelines below.
-3. Open a **Pull Request** with a clear title and description of what you added or changed.
-4. Automated checks will run on your PR. Please fix any failures before requesting review.
+1. **Fork** this repository.
+2. **Create a branch** from `main` with a descriptive name, e.g. `add-<project-name>`.
+3. **Edit `README.md`** to add your entry in the appropriate section table, following the [Entry Format](#entry-format) below.
+4. **Submit a pull request** against the `main` branch.
+
+A GitHub Actions workflow will automatically check your PR for formatting issues. Please address any failures before requesting a review.
 
 ---
 
-## Entry Requirements
+## Entry Format
 
-Before adding an entry, please verify that:
-
-- The project is **directly relevant** to robot vision (pose estimation, grasping, scene understanding, SLAM, depth estimation, robot learning with visual input, etc.).
-- The project has a **public code repository** (GitHub, GitLab, etc.) or an official website.
-- The project has reached a **minimum level of maturity** — it should have a paper, be actively maintained, or be a widely adopted library/dataset.
-- There is **no duplicate** of the entry already in the list.
-
----
-
-## Table Format
-
-All entries **must** follow the three-column table format used throughout the README:
+Each entry must be a row in the relevant Markdown table. The table has three columns:
 
 ```markdown
 | Name | Highlights | References |
-|---|---|---|
-| **[Project Name](https://github.com/owner/repo)** | One-sentence description of what it does. **[VENUE YEAR]** | [GitHub](https://github.com/owner/repo) · [arXiv](https://arxiv.org/abs/XXXX.XXXXX) · [Website](https://example.com) |
+|------|-----------|------------|
+| [Project Name](https://official-website.com/) | [Venue Year] One-sentence description of what makes this project notable | [arXiv](https://arxiv.org/abs/XXXX.XXXXX) · [GitHub](https://github.com/org/repo) · [Website](https://official-website.com/) |
 ```
 
 ### Column rules
 
-| Column | Requirements |
-|---|---|
-| **Name** | Bold + hyperlinked to the primary project page (GitHub or official website). |
-| **Highlights** | One concise sentence describing the project's contribution, ending with a **`[VENUE YEAR]`** tag in bold. |
-| **References** | Links separated by ` · `. Include as many as are available: `[GitHub]`, `[arXiv]`, `[Website]`, `[HF]` (HuggingFace). |
+| Column | Required | Description |
+|--------|----------|-------------|
+| **Name** | ✅ | A Markdown link `[Name](URL)` pointing to the project's official website or primary resource |
+| **Highlights** | ✅ | `[Venue Year]` tag (if published) followed by a single concise sentence describing what distinguishes this project |
+| **References** | ✅ | At least one reference link (arXiv, GitHub, or Website). Multiple links separated by ` · ` |
+
+### Reference link labels
+
+Use these standard labels for consistency:
+
+- `[arXiv](...)` — preprint or paper
+- `[GitHub](...)` — source code / dataset repository
+- `[Website](...)` — official project page
+- `[HF](...)` — HuggingFace model/dataset card
+- `[PDF](...)` — direct PDF link when no arXiv page exists
 
 ---
 
-## Publication Venue Tags
+## Quality Guidelines
 
-Every entry's **Highlights** column must end with a bolded venue tag:
-
-- Use the **official accepted venue**, not arXiv (arXiv is a preprint server, not a publication).
-- Format: `**[ABBREV YEAR]**` — e.g., `**[CVPR 2024]**`, `**[RA-L 2023]**`, `**[RSS 2025]**`.
-- Common abbreviations:
-
-  | Full Name | Abbreviation |
-  |---|---|
-  | IEEE/CVF Conference on Computer Vision and Pattern Recognition | CVPR |
-  | International Conference on Computer Vision | ICCV |
-  | European Conference on Computer Vision | ECCV |
-  | Neural Information Processing Systems | NeurIPS |
-  | International Conference on Learning Representations | ICLR |
-  | Robotics: Science and Systems | RSS |
-  | Conference on Robot Learning | CoRL |
-  | IEEE Int'l Conf. on Robotics and Automation | ICRA |
-  | IEEE/RSJ Int'l Conf. on Intelligent Robots and Systems | IROS |
-  | IEEE Robotics and Automation Letters | RA-L |
-  | IEEE Transactions on Robotics | T-RO |
-  | International Journal of Robotics Research | IJRR |
-  | ACM SIGGRAPH / ACM Transactions on Graphics | ACM ToG / SIGGRAPH |
-  | IEEE Transactions on Pattern Analysis and Machine Intelligence | TPAMI |
-
-- If a project is **preprint-only** (no confirmed publication yet), write `**[Preprint]**`.
-- If a project has **no paper** (pure library/toolbox), omit the tag entirely.
-
-### How to find the venue
-
-Check these sources in order:
-1. The project's **GitHub README** (usually has a citation or "accepted at X" note).
-2. The official **project website** or paper page.
-3. The **HuggingFace model card**.
-4. Search on [Papers With Code](https://paperswithcode.com) or [Semantic Scholar](https://www.semanticscholar.org).
+- **Relevance**: The project must be directly applicable to robot vision or a closely related sub-field.
+- **Accessibility**: The project (or at minimum its paper/description) must be publicly available.
+- **Conciseness**: The Highlights column should be one sentence. Avoid marketing language.
+- **Accuracy**: Double-check all links before submitting. Broken links will cause the automated check to fail.
+- **Placement**: Add the entry to the most appropriate existing section. If no section fits, propose a new one in your PR description and we will discuss it.
 
 ---
 
@@ -97,21 +86,19 @@ Check these sources in order:
 
 Before submitting your PR, confirm the following:
 
-- [ ] Entry follows the **three-column table format** exactly.
-- [ ] Project name in the **Name** column is bold and linked.
-- [ ] Highlights are **one concise sentence** ending with a **venue tag**.
-- [ ] Venue has been **verified** from an authoritative source (not inferred from arXiv alone).
-- [ ] All **links work** (GitHub, arXiv, website, HuggingFace).
-- [ ] Entry is placed in the **correct section** and in a logical position within the table.
-- [ ] No **duplicate** entry exists for the same project.
-- [ ] Spelling and grammar are correct.
+- [ ] The project is relevant to robot vision
+- [ ] The entry follows the three-column table format exactly
+- [ ] The **Name** column contains a valid Markdown link
+- [ ] The **References** column contains at least one working link
+- [ ] The **Highlights** description is one sentence and starts with a `[Venue Year]` tag (if applicable)
+- [ ] No existing entry for this project is present in the list
+- [ ] All links in your addition are reachable (not 404)
+- [ ] The PR title clearly describes what is being added, e.g. `Add FooNet to 6D Object Pose Estimation`
 
 ---
 
-## Reporting Issues
+## Code of Conduct
 
-If you notice a broken link, incorrect venue, or missing entry, please [open an issue](https://github.com/han-xudong/awesome-robot-vision/issues) with:
+This project follows the [Contributor Covenant](https://www.contributor-covenant.org/) Code of Conduct. By participating, you agree to uphold a welcoming and respectful environment for everyone.
 
-- The name of the entry with the problem.
-- A short description of the issue.
-- (Optionally) the correct information or a suggested fix.
+If you have questions or suggestions that are not suitable for a pull request, feel free to open an [issue](https://github.com/han-xudong/awesome-robot-vision/issues).
