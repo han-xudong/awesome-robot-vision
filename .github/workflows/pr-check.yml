@@ -1,0 +1,133 @@
+name: PR Check
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - "README.md"
+      - "CONTRIBUTING.md"
+
+jobs:
+  validate-entries:
+    name: Validate README entries
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Check table row format
+        run: |
+          python3 - <<'PYEOF'
+          import re, sys
+
+          with open("README.md", encoding="utf-8") as f:
+              lines = f.readlines()
+
+          errors = []
+
+          ROW_RE = re.compile(r"^\|\s*\[.+?\]\(.+?\)\s*\|.+\|.+\|\s*$")
+          LINK_RE = re.compile(r"\[.+?\]\(https?://[^\)]+\)")
+          HEADER_RE = re.compile(r"^\|\s*Name\s*\|")
+          SEP_RE = re.compile(r"^\|[-| ]+\|")
+
+          for i, line in enumerate(lines, 1):
+              if SEP_RE.match(line) or HEADER_RE.match(line):
+                  continue
+              if not line.startswith("|"):
+                  continue
+
+              cells = [c.strip() for c in line.strip().strip("|").split("|")]
+              if len(cells) < 3:
+                  continue
+
+              name_cell, highlights_cell, refs_cell = cells[0], cells[1], cells[2]
+
+              # Name cell must be a plain Markdown link (no bold)
+              if not re.match(r"^\[.+?\]\(https?://[^\)]+\)$", name_cell):
+                  errors.append(f"Line {i}: Name column must be a plain Markdown link `[Name](URL)` (no bold). Got: {name_cell!r}")
+
+              # Highlights must not be empty
+              if not highlights_cell:
+                  errors.append(f"Line {i}: Highlights column must not be empty.")
+
+              # References must contain at least one Markdown link
+              if not LINK_RE.search(refs_cell):
+                  errors.append(f"Line {i}: References column must contain at least one Markdown link. Got: {refs_cell!r}")
+
+          if errors:
+              print("❌ Validation errors found:\n")
+              for e in errors:
+                  print(f"  • {e}")
+              sys.exit(1)
+          else:
+              print("✅ All table entries look good.")
+          PYEOF
+
+      - name: Check for duplicate entries
+        run: |
+          python3 - <<'PYEOF'
+          import re, sys
+
+          with open("README.md", encoding="utf-8") as f:
+              content = f.read()
+
+          names = re.findall(r"^\|\s*\[(.+?)\]\(", content, re.MULTILINE)
+          seen = {}
+          duplicates = []
+          for name in names:
+              key = name.strip().lower()
+              if key in seen:
+                  duplicates.append(name.strip())
+              else:
+                  seen[key] = True
+
+          if duplicates:
+              print("❌ Duplicate entries found:")
+              for d in duplicates:
+                  print(f"  • {d}")
+              sys.exit(1)
+          else:
+              print(f"✅ No duplicates found ({len(seen)} entries checked).")
+          PYEOF
+
+  check-links:
+    name: Check links in changed files
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install lychee
+        run: |
+          curl -sLO https://github.com/lycheeverse/lychee/releases/download/v0.15.1/lychee-v0.15.1-x86_64-unknown-linux-gnu.tar.gz
+          tar xzf lychee-v0.15.1-x86_64-unknown-linux-gnu.tar.gz
+          chmod +x lychee
+          sudo mv lychee /usr/local/bin/
+
+      - name: Get changed files
+        id: changed-files
+        uses: tj-actions/changed-files@v46
+        with:
+          files: |
+            README.md
+            CONTRIBUTING.md
+
+      - name: Check links in changed Markdown files
+        if: steps.changed-files.outputs.any_changed == 'true'
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          lychee \
+            --no-progress \
+            --timeout 30 \
+            --retry-wait-time 5 \
+            --max-retries 3 \
+            --accept 401,403 \
+            --exclude "https://img.shields.io" \
+            --exclude "https://awesome.re" \
+            ${{ steps.changed-files.outputs.all_changed_files }}
+        continue-on-error: false
