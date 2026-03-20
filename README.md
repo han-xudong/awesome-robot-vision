@@ -1,7 +1,6 @@
 # Awesome Robot Vision [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
 
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](https://github.com/han-xudong/awesome-robot-vision/pulls)
-[![GitHub Stars](https://img.shields.io/github/stars/han-xudong/awesome-robot-vision?style=social)](https://github.com/han-xudong/awesome-robot-vision/stargazers)
 [![Last Commit](https://img.shields.io/github/last-commit/han-xudong/awesome-robot-vision)](https://github.com/han-xudong/awesome-robot-vision/commits)
 [![License: CC0-1.0](https://img.shields.io/badge/License-CC0_1.0-lightgrey.svg)](https://creativecommons.org/publicdomain/zero/1.0/)
 
